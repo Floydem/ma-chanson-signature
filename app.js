@@ -8,4 +8,36 @@ document.querySelectorAll("[data-choose]").forEach(b=>b.addEventListener("click"
 images.addEventListener("change",()=>{const files=Array.from(images.files||[]).filter(f=>f.type.startsWith("image/")).slice(0,5);const total=files.reduce((s,f)=>s+f.size,0);if(total>10*1024*1024){selectedFiles=[];images.value="";show("error","Les images dépassent 10 Mo au total.");return}selectedFiles=files;summary.textContent=files.length?files.length+" image"+(files.length>1?"s":"")+" • "+(total/1024/1024).toFixed(1)+" Mo • "+files.map(f=>f.name).join(" · "):""});
 function show(type,msg){statusBox.className="status visible "+type;statusBox.textContent=msg}
 function clearStatus(){statusBox.className="status";statusBox.textContent=""}
-form.addEventListener("submit",async e=>{e.preventDefault();clearStatus();if(selectedOffer==="signature"&&selectedFiles.length===0){show("error","Ajoutez au moins une image pour la formule Signature complète.");return}const data=new FormData(form);data.set("Formule",offers[selectedOffer].title+" — "+offers[selectedOffer].format);data.set("_subject","Nouvelle demande Ma Chanson Signature — "+(data.get("occasion")||"Projet"));data.set("_template","table");data.set("_captcha","false");selectedFiles.forEach((f,i)=>data.append("image_"+(i+1),f,f.name));submitBtn.disabled=true;submitBtn.textContent="Envoi en cours…";try{const res=await fetch("https://formsubmit.co/ajax/"+encodeURIComponent(CONTACT_EMAIL),{method:"POST",body:data,headers:{Accept:"application/json"}});const json=await res.json().catch(()=>({}));if(!res.ok||json.success===false||json.success==="false")throw new Error("L’envoi n’a pas abouti. Réessayez dans quelques instants.");show("success","Votre demande est bien partie. Nous revenons vers vous par e-mail.");form.reset();selectedFiles=[];summary.textContent="";setOffer("mp3",false)}catch(err){show("error",err.message||"Une erreur est survenue.")}finally{submitBtn.disabled=false;submitBtn.textContent="Envoyer ma demande →"}});
+form.addEventListener("submit",async e=>{
+  e.preventDefault();
+  clearStatus();
+  if(selectedOffer==="signature"&&selectedFiles.length===0){show("error","Ajoutez au moins une image pour la formule Signature complète.");return}
+  const data=new FormData(form);
+  data.set("Formule",offers[selectedOffer].title+" — "+offers[selectedOffer].format);
+  data.set("_subject","Nouvelle demande Ma Chanson Signature — "+(data.get("occasion")||"Projet"));
+  data.set("_template","table");
+  data.set("_captcha","false");
+  data.set("_url",window.location.origin+"/");
+  selectedFiles.forEach((f,i)=>data.append("image_"+(i+1),f,f.name));
+  submitBtn.disabled=true;
+  submitBtn.textContent="Envoi en cours…";
+  try{
+    const res=await fetch("https://formsubmit.co/ajax/"+CONTACT_EMAIL,{method:"POST",body:data,headers:{Accept:"application/json"}});
+    const json=await res.json().catch(()=>({}));
+    const success=json.success===true||json.success==="true";
+    if(!res.ok||!success){
+      const rawMessage=String(json.message||json.Message||"").toLowerCase();
+      if(rawMessage.includes("activ")||rawMessage.includes("confirm")){
+        throw new Error("Le formulaire doit d’abord être activé par e-mail. Ouvrez le message FormSubmit reçu sur l’adresse de contact, cliquez sur « Activate Form », puis renvoyez votre demande.");
+      }
+      throw new Error(json.message||"L’envoi n’a pas abouti. Réessayez dans quelques instants.");
+    }
+    show("success","Votre demande est bien partie. Nous revenons vers vous par e-mail.");
+    form.reset();selectedFiles=[];summary.textContent="";setOffer("mp3",false);
+  }catch(err){
+    show("error",err.message||"Une erreur est survenue.");
+  }finally{
+    submitBtn.disabled=false;
+    submitBtn.textContent="Envoyer ma demande →";
+  }
+});
