@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Créez une chanson personnalisée à partir de vos souvenirs, de vos mots et de vos émotions.">
+  <title>Ma Chanson Signature | Votre histoire en musique</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="header">
+  <a class="brand" href="#top"><span class="logo">♪</span><span><strong>Ma Chanson</strong><b>Signature</b><small>DES ÉMOTIONS EN MUSIQUE</small></span></a>
+  <nav><a href="#fonctionnement">Comment ça marche ?</a><a href="#offres">Nos offres</a><a href="#faq">FAQ</a></nav>
+  <a class="cta small" href="#demande">Créer ma chanson →</a>
+</header>
+
+<main>
+<section class="hero" id="top">
+  <div class="heroCopy">
+    <span class="eyebrow">UNE CHANSON UNIQUE, POUR LES MOMENTS QUI COMPTENT</span>
+    <h1>Offrez bien plus qu’un cadeau : <em>une chanson unique.</em></h1>
+    <p>Vous racontez l’histoire. Nous transformons vos souvenirs, vos mots et vos émotions en une création musicale personnalisée.</p>
+    <div class="pills"><span>♡ 100 % personnalisée</span><span>♪ Tous les styles</span><span>✦ Création originale</span></div>
+    <div class="actions"><a class="cta" href="#demande">Créer ma chanson →</a><a class="ghost" href="#offres">Voir les formules</a></div>
+  </div>
+  <div class="heroArt">
+    <div class="heroImage"></div>
+    <div class="scribble">Des émotions<br>qui restent<br>en musique ♡</div>
+    <div class="note">Certaines histoires<br><b>méritent une chanson.</b></div>
+  </div>
+</section>
+
+<section class="request" id="demande">
+  <div class="requestIntro">
+    <span class="eyebrow">VOTRE DEMANDE</span>
+    <h2>Racontez-nous votre histoire</h2>
+    <p>Plus votre brief est précis, plus la première création pourra viser juste. Aucun paiement n’est demandé à cette étape.</p>
+    <div class="selected"><small>FORMULE SÉLECTIONNÉE</small><strong id="selectedTitle">Chanson seule</strong><span id="selectedFormat">MP3 • 2 versions</span></div>
+    <div class="mailInfo"><b>Envoi par e-mail</b><br>Votre demande arrive sur notre boîte e-mail et est étudiée manuellement.</div>
+  </div>
+
+  <form id="requestForm" class="form" enctype="multipart/form-data">
+    <div class="grid two">
+      <label>Occasion *<select name="occasion" required><option value="">Choisissez</option><option>Anniversaire</option><option>Mariage</option><option>Déclaration d’amour</option><option>Naissance</option><option>Départ / retraite</option><option>Amitié</option><option>Entreprise</option><option>Hommage</option><option>Autre</option></select></label>
+      <label>Thème *<input name="theme" required placeholder="Amour, famille, réussite..."></label>
+    </div>
+
+    <div class="grid two">
+      <label>Prénom / nom / entreprise *<input name="destinataire" required placeholder="Julie, Marc, Entreprise Dupont..."></label>
+      <label>Votre relation *<input name="relation" required placeholder="Ma mère, mon conjoint, un collègue..."></label>
+    </div>
+
+    <label>Histoire, souvenirs et anecdotes *<textarea name="histoire" rows="5" required placeholder="Moments importants, rencontre, voyages, habitudes, anecdotes, phrases cultes..."></textarea></label>
+
+    <div class="grid two">
+      <label>Message principal *<textarea name="message" rows="3" required placeholder="Merci pour tout, joyeux anniversaire, je suis fier de toi..."></textarea></label>
+      <label>Émotion recherchée *<select name="emotion" required><option value="">Choisissez</option><option>Émouvante</option><option>Joyeuse</option><option>Romantique</option><option>Drôle</option><option>Énergique</option><option>Épique</option><option>Nostalgique</option><option>Douce</option><option>Festive</option></select></label>
+    </div>
+
+    <div class="grid three">
+      <label>Style musical *<select name="style" required><option value="">Choisissez</option><option>Pop</option><option>Variété française</option><option>Rock</option><option>Ballade</option><option>Acoustique</option><option>Électro</option><option>Latino / Reggaeton</option><option>Rap</option><option>Soul / R&B</option><option>Cinématique</option><option>Autre</option></select></label>
+      <label>Voix *<select name="voix" required><option value="">Choisissez</option><option>Féminine</option><option>Masculine</option><option>Duo</option><option>Peu importe</option></select></label>
+      <label>Langue *<select name="langue" required><option>Français</option><option>Anglais</option><option>Espagnol</option><option>Italien</option><option>Autre</option></select></label>
+    </div>
+
+    <div class="grid two">
+      <label>Artistes / chansons d’inspiration<input name="inspirations" placeholder="Queen, Goldman, Vianney, Coldplay..."></label>
+      <label>Date souhaitée<input type="date" name="date_souhaitee"></label>
+    </div>
+
+    <div class="grid two">
+      <label>Mots / expressions à intégrer<input name="mots_inclure" placeholder="Prénoms, lieux, surnoms, phrases..."></label>
+      <label>Sujets ou mots à éviter<input name="mots_eviter" placeholder="Ce que vous ne voulez pas entendre..."></label>
+    </div>
+
+    <fieldset class="offerPicker">
+      <legend>Formule souhaitée *</legend>
+      <button type="button" class="mini active" data-offer="mp3"><span>♪</span><b>Chanson seule</b><small>MP3 • 2 versions</small></button>
+      <button type="button" class="mini" data-offer="video"><span>▶</span><b>Chanson + paroles</b><small>MP3 + VIDÉO</small></button>
+      <button type="button" class="mini" data-offer="signature"><span>▣</span><b>Signature complète</b><small>MP3 + VIDÉO + PDF</small></button>
+    </fieldset>
+
+    <div class="upload" id="uploadBlock">
+      <b>Vos images pour la vidéo personnalisée *</b>
+      <small>De 1 à 5 images JPG / PNG / WebP. 10 Mo maximum au total.</small>
+      <label class="uploadBtn">＋ Ajouter mes images<input id="images" type="file" accept="image/*" multiple></label>
+      <div id="fileSummary" class="fileSummary"></div>
+    </div>
+
+    <div class="grid two">
+      <label>Votre e-mail *<input type="email" name="email" required placeholder="vous@email.fr"></label>
+      <label>Téléphone <span class="optional">facultatif</span><input type="tel" name="telephone" placeholder="06 12 34 56 78"></label>
+    </div>
+
+    <label>Précisions complémentaires<textarea name="precisions" rows="3" placeholder="Tout ce qui peut nous aider à mieux comprendre votre idée..."></textarea></label>
+
+    <label class="consent"><input type="checkbox" required name="consentement" value="oui"><span>J’accepte que les informations transmises soient utilisées uniquement pour traiter ma demande de création musicale.</span></label>
+
+    <button id="submitBtn" class="submit" type="submit">Envoyer ma demande →</button>
+    <p class="help">Aucun paiement maintenant. Vous recevez d’abord une réponse avec la proposition et le tarif.</p>
+    <div id="formStatus" class="status"></div>
+  </form>
+</section>
+
+<section class="section" id="fonctionnement">
+  <div class="sectionHead"><span class="eyebrow">COMMENT ÇA MARCHE ?</span><h2>De votre histoire à votre chanson</h2><p>Un processus simple, humain et rapide.</p></div>
+  <div class="steps">
+    <article><span>01</span><h3>Vous racontez</h3><p>Vous remplissez le brief avec les détails qui comptent.</p></article>
+    <article><span>02</span><h3>Nous créons</h3><p>Nous écrivons, générons, sélectionnons et peaufinons votre chanson.</p></article>
+    <article><span>03</span><h3>Vous recevez</h3><p>Nous livrons les fichiers correspondant à votre formule.</p></article>
+    <article><span>04</span><h3>Vous faites vibrer</h3><p>Il ne reste qu’à l’offrir, la partager ou la garder précieusement.</p></article>
+  </div>
+</section>
+
+<section class="section offers" id="offres">
+  <div class="sectionHead"><span class="eyebrow">NOS FORMULES</span><h2>Trois façons de mettre votre histoire en musique</h2><p>Le tarif est confirmé avant toute création.</p></div>
+  <div class="cards">
+    <article class="card">
+      <div class="cardTop"><span class="icon">♪</span><span class="badge">2 versions incluses</span></div>
+      <h3>Chanson seule</h3><strong>MP3</strong>
+      <p>Deux interprétations de votre histoire, prêtes à écouter et à offrir.</p>
+      <ul><li>Paroles et musique originales</li><li>2 versions de la chanson</li><li>2 fichiers MP3 haute qualité</li></ul>
+      <div class="price">Tarif communiqué avant validation</div>
+      <button data-choose="mp3">Choisir cette formule →</button>
+    </article>
+
+    <article class="card featured">
+      <div class="cardTop"><span class="icon">▶</span><span class="badge">Idéal à partager</span></div>
+      <h3>Chanson + paroles</h3><strong>MP3 + VIDÉO</strong>
+      <p>Une chanson MP3 accompagnée d’une vidéo style karaoké.</p>
+      <ul><li>1 chanson personnalisée en MP3</li><li>Vidéo karaoké avec paroles qui défilent</li><li>Livraison MP3 + MP4</li><li>2e version possible en supplément</li></ul>
+      <div class="price">Tarif communiqué avant validation</div>
+      <button data-choose="video">Choisir cette formule →</button>
+    </article>
+
+    <article class="card">
+      <div class="cardTop"><span class="icon">▣</span><span class="badge">Expérience complète</span></div>
+      <h3>Signature complète</h3><strong>MP3 + VIDÉO + PDF</strong>
+      <p>La formule vidéo enrichie avec vos photos et les paroles mises en page.</p>
+      <ul><li>1 chanson personnalisée en MP3</li><li>Vidéo karaoké avec paroles qui défilent</li><li>Paroles livrées en PDF</li><li>Jusqu’à 5 images personnelles dans la vidéo</li><li>2e version possible en supplément</li></ul>
+      <div class="price">Tarif communiqué avant validation</div>
+      <button data-choose="signature">Choisir cette formule →</button>
+    </article>
+  </div>
+</section>
+
+<section class="section faq" id="faq">
+  <div class="sectionHead"><span class="eyebrow">FAQ</span><h2>Avant de lancer votre chanson</h2></div>
+  <div class="faqGrid">
+    <details><summary>Pourquoi deux versions dans la formule MP3 ?</summary><p>Pour vous laisser un vrai choix artistique, avec deux interprétations du même brief.</p></details>
+    <details><summary>La formule vidéo contient-elle deux chansons ?</summary><p>Non. Elle comprend une chanson MP3 et sa vidéo karaoké. Une deuxième version musicale peut être ajoutée en supplément.</p></details>
+    <details><summary>Combien d’images puis-je envoyer ?</summary><p>La formule Signature complète accepte jusqu’à 5 images personnelles, pour un maximum total de 10 Mo.</p></details>
+    <details><summary>Puis-je demander un style très précis ?</summary><p>Oui. Indiquez les artistes, époques, ambiances ou instruments qui vous inspirent.</p></details>
+  </div>
+</section>
+
+<section class="final">
+  <div><span class="eyebrow">PRÊT À RACONTER VOTRE HISTOIRE ?</span><h2>Quelques souvenirs peuvent devenir votre morceau.</h2><p>Commencez par le brief. Rien n’est facturé tant que vous n’avez pas validé la proposition.</p></div>
+  <a class="cta" href="#demande">Créer ma chanson →</a>
+</section>
+</main>
+
+<footer><div class="brand"><span class="logo">♪</span><span><strong>Ma Chanson</strong><b>Signature</b></span></div><span>Prototype bêta • © 2026</span></footer>
+<script src="app.js"></script>
+</body>
+</html>
